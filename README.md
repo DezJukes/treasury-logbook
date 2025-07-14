@@ -53,5 +53,3 @@ To set up and run the project locally:
 - Integrate AI-powered search and Q&A features.
 
 ---
-
-Feel free to contribute or suggest improvements!

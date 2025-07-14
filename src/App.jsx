@@ -10,7 +10,7 @@ function App() {
       <Toaster position="top-right" richColors />
       <Navbar />
       <main className="min-h-screen flex justify-center items-start bg-gray-50 py-10">
-        <div className="flex gap-10 w-full max-w-7xl px-6">
+        <div className="max-sm:flex-col flex justify-center gap-10 w-full max-w-7xl px-6">
           <SectionInputs />
           <SectionDisplay />
         </div>

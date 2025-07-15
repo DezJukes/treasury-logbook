@@ -1,4 +1,5 @@
-import { FileText, Search } from "lucide-react";
+import { FileText, Search, Download } from "lucide-react";
+import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import React from "react";
 import {
@@ -27,16 +28,20 @@ function SectionDisplay() {
   return (
     <main className="flex flex-col gap-5 w-full max-w-4xl border border-gray-400 rounded-lg ml-auto">
       {/* Header with Icon and Search */}
-      <section className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-6 py-4 bg-gray-100 border-b">
+      <section className="flex flex-col sm:flex-row sm:items-center sm:justify-around gap-4 px-6 py-4 bg-gray-100 border-b">
+        
         <div>
           <div className="flex items-center gap-2">
             <FileText />
             <h1 className="text-h2 font-bold">Entries</h1>
           </div>
-          <p className="text-sm text-gray-600">
-            Manage and view all student visit entries
-          </p>
+          <p className="text-sm text-gray-600"> Manage and view all student visit entries</p>
         </div>
+
+        <div>
+          <Button className="btn-save bg-transparent text-black border border-gray-300 w-full cursor-pointer"><Download />Save list</Button>
+        </div>
+        
         <div className="w-full sm:w-1/3">
           <div className="relative">
             <Search className="absolute left-3 top-2.5 text-gray-400 h-4 w-4" />

@@ -41,6 +41,7 @@ function SectionDisplay() {
           <p className="text-sm text-gray-600"> Manage and view all student visit entries</p>
         </div>
 
+        {/* Date Picker */}
         <div>
           <DatePicker value={date} onChange={setDate} />
           {date && (
@@ -50,6 +51,7 @@ function SectionDisplay() {
           )}
         </div>
 
+        {/* Save as .csv button */}
         <div>
           <Button className="btn-save bg-transparent text-black border border-gray-300 w-full cursor-pointer"><Download />Save list</Button>
         </div>

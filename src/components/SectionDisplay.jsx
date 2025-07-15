@@ -65,8 +65,8 @@ function SectionDisplay() {
       </section>
 
       {/* Table with horizontal scroll */}
-      <div className="w-full overflow-x-auto px-6 pb-6">
-        <div className="min-w-[700px]">
+      <div className="w-full px-6 pb-6">
+        <div className="min-h-[300px] max-h-[400px] overflow-y-auto border rounded-md">
           <Table>
             <TableCaption>Recent visit entries</TableCaption>
             <TableHeader>

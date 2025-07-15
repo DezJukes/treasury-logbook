@@ -21,6 +21,16 @@
   scale: 1.03;
 }
 
+.btn-save:hover {
+  border: 3px solid #cedaff;
+  scale: 1.03;
+}
+
+.btn-save:active {
+  background-color: #d8e2ff;
+  scale: 1.03;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

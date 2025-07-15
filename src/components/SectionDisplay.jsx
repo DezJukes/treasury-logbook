@@ -10,8 +10,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useEntries } from "../hooks/supabaseFetch";
 
 function SectionDisplay() {
+  const entries = useEntries();
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    if (isNaN(date)) return "";
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const dd = String(date.getDate()).padStart(2, "0");
+    const yyyy = date.getFullYear();
+    return `${mm}-${dd}-${yyyy}`;
+  };
+
   return (
     <main className="flex flex-col gap-5 w-full max-w-4xl border border-gray-400 rounded-lg ml-auto">
       {/* Header with Icon and Search */}
@@ -48,13 +60,15 @@ function SectionDisplay() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow>
-                <TableCell className="font-medium">202234078</TableCell>
-                <TableCell>Juan Dela Cruz</TableCell>
-                <TableCell>Request for documents</TableCell>
-                <TableCell>Mam Cherry</TableCell>
-                <TableCell className="text-right">2025-07-14</TableCell>
-              </TableRow>
+                {entries.map((entry, index) => (
+                  <TableRow key={index}>
+                    <TableCell className="font-medium">{entry.student_no}</TableCell>
+                    <TableCell>{entry.student_name}</TableCell>
+                    <TableCell>{entry.purpose}</TableCell>
+                    <TableCell>{entry.staff}</TableCell>
+                    <TableCell className="text-right">{formatDate(entry.date)}</TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </div>

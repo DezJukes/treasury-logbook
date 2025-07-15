@@ -12,9 +12,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useEntries } from "../hooks/supabaseFetch";
+import { DatePicker } from "../components/ui/CalendarPicker";
+
 
 function SectionDisplay() {
   const entries = useEntries();
+  const [date, setDate] = React.useState(null)
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -36,6 +39,15 @@ function SectionDisplay() {
             <h1 className="text-h2 font-bold">Entries</h1>
           </div>
           <p className="text-sm text-gray-600"> Manage and view all student visit entries</p>
+        </div>
+
+        <div>
+          <DatePicker value={date} onChange={setDate} />
+          {date && (
+            <p className="text-[12px] text-gray-600">
+              You selected: {date.toDateString()}
+            </p>
+          )}
         </div>
 
         <div>

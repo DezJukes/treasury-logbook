@@ -23,7 +23,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="w-full flex justify-around items-center px-6 py-4 shadow-2xl bg-white border-b">
+    <nav className="w-full flex justify-between items-center px-20 py-4 shadow-2xl bg-white border-b">
       <div className="flex items-center gap-4">
         <BookOpen className="h-18 w-18 bg-blue-500 text-white p-3 rounded-md" />
         <div>

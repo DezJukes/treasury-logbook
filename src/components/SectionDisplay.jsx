@@ -1,4 +1,4 @@
-import { FileText, Search, Download } from "lucide-react";
+import { FileText, Search, Download, CircleX } from "lucide-react";
 import { DatePicker } from "../components/ui/CalendarPicker";
 import { useEntries } from "../hooks/supabaseFetch";
 import { Input } from "./ui/input";
@@ -59,16 +59,17 @@ function SectionDisplay() {
 
       {/* Table with horizontal scroll */}
       <div className="w-full px-6 pb-6">
-        <div className="min-h-[300px] max-h-[400px] overflow-y-auto border rounded-md">
+        <div className="min-h-[300px] max-h-[400px] overflow-y-auto border">
           <Table>
             <TableCaption>Recent visit entries</TableCaption>
-            <TableHeader>
+            <TableHeader className="bg-gray-200">
               <TableRow>
                 <TableHead className="w-[120px]">Student No.</TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Purpose</TableHead>
                 <TableHead>Staff</TableHead>
                 <TableHead className="text-right">Date</TableHead>
+                <TableHead className="text-right">Action</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -79,6 +80,7 @@ function SectionDisplay() {
                     <TableCell className="max-w-xs whitespace-break-spaces break-words">{entry.purpose}</TableCell>
                     <TableCell>{entry.staff}</TableCell>
                     <TableCell className="text-right">{formatDate(entry.date)}</TableCell>
+                    <TableCell className="text-red-500"><div className="btn-remove flex items-center justify-center cursor-pointer"><CircleX /></div></TableCell>
                   </TableRow>
                 ))}
             </TableBody>

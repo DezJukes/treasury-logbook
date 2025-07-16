@@ -1,7 +1,6 @@
 import { FileText, Search, Download } from "lucide-react";
 import { DatePicker } from "../components/ui/CalendarPicker";
 import { useEntries } from "../hooks/supabaseFetch";
-import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import React from "react";
 import {
@@ -48,11 +47,6 @@ function SectionDisplay() {
               You selected: {date.toDateString()}
             </p>
           )}
-        </div>
-
-        {/* Save as .csv button */}
-        <div>
-          <Button className="btn-save bg-transparent text-black border border-gray-300 w-full cursor-pointer"><Download />Save list</Button>
         </div>
         
         <div className="w-full sm:w-1/3">

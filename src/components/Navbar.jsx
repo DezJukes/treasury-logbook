@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Download } from "lucide-react";
+import { Button } from "./ui/button";
 
 function Navbar() {
   const [dateTime, setDateTime] = useState(new Date());
@@ -23,7 +24,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="w-full flex justify-between items-center px-20 py-4 shadow-2xl bg-white border-b">
+    <nav className="w-full flex justify-between items-center px-30 py-4 shadow-2xl bg-white border-b">
       <div className="flex items-center gap-4">
         <BookOpen className="h-18 w-18 bg-blue-500 text-white p-3 rounded-md" />
         <div>
@@ -32,7 +33,13 @@ function Navbar() {
         </div>
       </div>
 
-      <p className="text-sm">{formatDateTime(dateTime)}</p>
+      <div className="flex items-center gap-10">
+        <p className="text-sm">{formatDateTime(dateTime)}</p>
+        {/* Save as .csv button */}
+        <div>
+          <Button className="btn-save gap-3 bg-transparent text-black border border-gray-300 w-full cursor-pointer"><Download />Save list</Button>
+        </div>
+      </div>
     </nav>
   );
 }

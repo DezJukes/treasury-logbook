@@ -1,4 +1,6 @@
 import { FileText, Search, Download } from "lucide-react";
+import { DatePicker } from "../components/ui/CalendarPicker";
+import { useEntries } from "../hooks/supabaseFetch";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import React from "react";
@@ -11,9 +13,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useEntries } from "../hooks/supabaseFetch";
-import { DatePicker } from "../components/ui/CalendarPicker";
-
 
 function SectionDisplay() {
   const entries = useEntries();

@@ -83,7 +83,7 @@ function SectionDisplay() {
                   <TableRow key={index}>
                     <TableCell className="font-medium">{entry.student_no}</TableCell>
                     <TableCell>{entry.student_name}</TableCell>
-                    <TableCell>{entry.purpose}</TableCell>
+                    <TableCell className="max-w-xs whitespace-break-spaces break-words">{entry.purpose}</TableCell>
                     <TableCell>{entry.staff}</TableCell>
                     <TableCell className="text-right">{formatDate(entry.date)}</TableCell>
                   </TableRow>

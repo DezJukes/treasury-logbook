@@ -1,6 +1,7 @@
 import { FileText, Search, Download, CircleX } from "lucide-react";
 import { DatePicker } from "../components/ui/CalendarPicker";
 import { useEntries } from "../hooks/supabaseFetch";
+import { deleteEntry } from "@/hooks/deleteEntry";
 import { Input } from "./ui/input";
 import React from "react";
 import {
@@ -14,9 +15,9 @@ import {
 } from "@/components/ui/table";
 
 function SectionDisplay() {
-  const entries = useEntries();
-  const [date, setDate] = React.useState(null)
-
+  const [date, setDate] = React.useState(new Date());
+  const entries = useEntries(date);
+  
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     if (isNaN(date)) return "";
@@ -80,7 +81,7 @@ function SectionDisplay() {
                     <TableCell className="max-w-xs whitespace-break-spaces break-words">{entry.purpose}</TableCell>
                     <TableCell>{entry.staff}</TableCell>
                     <TableCell className="text-right">{formatDate(entry.date)}</TableCell>
-                    <TableCell className="text-red-500"><div className="btn-remove flex items-center justify-center cursor-pointer"><CircleX /></div></TableCell>
+                    <TableCell className="text-red-500"><div className="btn-remove flex items-center justify-center cursor-pointer"><CircleX onClick={async() => {deleteEntry(entry.id)}}/></div></TableCell>
                   </TableRow>
                 ))}
             </TableBody>

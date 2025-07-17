@@ -35,10 +35,6 @@ function Navbar() {
 
       <div className="flex items-center gap-10">
         <p className="text-sm">{formatDateTime(dateTime)}</p>
-        {/* Save as .csv button */}
-        <div>
-          <Button className="btn-save gap-3 bg-transparent text-black border border-gray-300 w-full cursor-pointer"><Download />Save list</Button>
-        </div>
       </div>
     </nav>
   );

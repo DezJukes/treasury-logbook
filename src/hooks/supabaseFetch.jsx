@@ -1,35 +1,43 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/createClient";
 
-export function useEntries() {
-    const [entries, setEntries] = useState([]);
-    const today = new Date();
+export function useEntries(selectedDate) {
+  const [entries, setEntries] = useState([]);
+
+  useEffect(() => {
+    if (!selectedDate) return;
 
     const startOfDay = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate(),
-    0, 0, 0
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      selectedDate.getDate(),
+      0, 0, 0
     ).toISOString();
 
     const endOfDay = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate(),
-    23, 59, 59, 999
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      selectedDate.getDate(),
+      23, 59, 59, 999
     ).toISOString();
 
-    useEffect(() => {
-        const fetchEntries = async () => {
-            const { data, error } = await supabase.from("visit_entries").select("*").gte("date", startOfDay).lte("date", endOfDay);
-            if (error) {
-                console.log("Error fetching: ", error);
-            } else {
-                setEntries(data || []);
-            }
-        };
-        fetchEntries();
-    }, []);
+    const fetchEntries = async () => {
+      const { data, error } = await supabase.from("visit_entries").select("*").gte("date", startOfDay).lte("date", endOfDay).order("date", { ascending: false });;
+      if (error) {
+        console.log("Error fetching: ", error);
+      } else {
+        setEntries(data || []);
+      }
+    };
 
-    return entries;
+    fetchEntries();
+
+    const channel = supabase.channel("visit_entries_changes").on("postgres_changes",
+        { event: "*", schema: "public", table: "visit_entries",}, () => { fetchEntries(); }
+    ).subscribe();
+
+    return () => {supabase.removeChannel(channel);}
+  }, [selectedDate]);
+
+  return entries;
 }

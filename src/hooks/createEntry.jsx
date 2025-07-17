@@ -25,7 +25,7 @@ export function createEntry() {
       setStudentNo("");
       setStudentName("");
       setPurpose("");
-      setStaff("");
+      setStaff("Select");
     }
   };
 

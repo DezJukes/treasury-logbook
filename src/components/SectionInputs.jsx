@@ -41,7 +41,8 @@ function SectionInputs() {
       {/* Student Number  */}
       <div className="flex flex-col gap-2 px-10">
         <Label>Student Number</Label>
-        <Input className="" placeholder="eg. 202234078" 
+        <Input className="" placeholder="eg. 202234078"
+        value={studentNo} 
         onChange={(e) => setStudentNo(e.target.value)}
         />
       </div>
@@ -50,6 +51,7 @@ function SectionInputs() {
       <div className="flex flex-col gap-2 px-10">
         <Label>Student Name</Label>
         <Input className="" placeholder="Enter full name" 
+        value={studentName}
         onChange={(e) => setStudentName(e.target.value)}
         />
       </div>
@@ -57,7 +59,8 @@ function SectionInputs() {
       {/* Purpose  */}
       <div className="flex flex-col gap-2 px-10">
         <Label>Purpose of Visit</Label>
-        <Textarea placeholder="Describe the reason for the visit.." 
+        <Textarea placeholder="Describe the reason for the visit.."
+        value={purpose} 
         onChange={(e) => setPurpose(e.target.value)}
         />
       </div>

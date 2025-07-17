@@ -2,7 +2,9 @@ import { FileText, Search, Download, CircleX } from "lucide-react";
 import { DatePicker } from "../components/ui/CalendarPicker";
 import { useEntries } from "../hooks/supabaseFetch";
 import { deleteEntry } from "@/hooks/deleteEntry";
+import { exportEntries } from "@/hooks/exportEntries";
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 import React from "react";
 import {
   Table,
@@ -49,7 +51,12 @@ function SectionDisplay() {
             </p>
           )}
         </div>
-        
+
+        {/* Save as .csv button */}
+        <div>
+          <Button className="btn-save gap-3 bg-transparent text-black border border-gray-300 w-full cursor-pointer" onClick={async() => exportEntries(entries, date)} ><Download />Save list</Button>
+        </div>
+
         <div className="w-full sm:w-1/3">
           <div className="relative">
             <Search className="absolute left-3 top-2.5 text-gray-400 h-4 w-4" />

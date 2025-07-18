@@ -30,7 +30,13 @@ function SectionDisplay() {
   const [selectedEntry, setSelectedEntry] = React.useState(null);
   const [validation, setValidation] = React.useState(false);
   const [date, setDate] = React.useState(new Date());
+  const [searchTerm, setSearchTerm] = React.useState("");
   const entries = useEntries(date);
+  
+  // Filter entries based on search term
+  const filteredEntries = entries.filter(entry =>
+    entry.student_name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -72,7 +78,12 @@ function SectionDisplay() {
         <div className="w-full sm:w-1/3">
           <div className="relative">
             <Search className="absolute left-3 top-2.5 text-gray-400 h-4 w-4" />
-            <Input className="pl-10 w-full" placeholder="Search entries..." />
+            <Input 
+              className="pl-10 w-full" 
+              placeholder="Search by student name..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
         </div>
       </section>
@@ -93,7 +104,7 @@ function SectionDisplay() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {entries.map((entry, index) => (
+              {filteredEntries.map((entry, index) => (
                 <TableRow key={index}>
                   <TableCell className="font-medium">{entry.student_no}</TableCell>
                   <TableCell>{entry.student_name}</TableCell>

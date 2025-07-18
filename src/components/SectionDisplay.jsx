@@ -1,4 +1,4 @@
-import { FileText, Search, Download, CircleX, SquareX } from "lucide-react";
+import { FileText, Search, Download, CircleX, SquareX, ReceiptText } from "lucide-react";
 import { DatePicker } from "../components/ui/CalendarPicker";
 import { useEntries } from "../hooks/supabaseFetch";
 import { deleteEntry } from "@/hooks/deleteEntry";
@@ -66,7 +66,7 @@ function SectionDisplay() {
 
         {/* Save as .csv button */}
         <div>
-          <Button className="btn-save gap-3 bg-transparent text-black border border-gray-300 w-full cursor-pointer" onClick={async() => exportEntries(entries, date)} ><Download />Save list</Button>
+          <Button className="btn-save gap-3 bg-transparent text-black border border-gray-300 w-full cursor-pointer" onClick={() => setValidation(true)} ><Download />Save list</Button>
         </div>
 
         <div className="w-full sm:w-1/3">
@@ -115,7 +115,7 @@ function SectionDisplay() {
             <DialogHeader>
               <DialogTitle>Are you sure?</DialogTitle>
               <DialogDescription>
-                Double check your entry. We just keep tracking everyone who entered Treasury Office.
+                Double check the entry. You will remove an entry in the list.
               </DialogDescription>
             </DialogHeader>
             <DialogFooter>
@@ -126,6 +126,31 @@ function SectionDisplay() {
                     setSelectedEntry(null);
                   }} variant="primary">
                   <SquareX />Delete Entry
+                </Button>
+              </DialogClose>
+              <DialogClose asChild>
+                <Button className="btn-close cursor-pointer" type="button" variant="secondary" onClick={() => {setValidation(false); setSelectedEntry(null); }}>
+                  Close
+                </Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )}
+
+      {validation && (
+        <Dialog open={validation} onOpenChange={setValidation}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Are you sure?</DialogTitle>
+              <DialogDescription>
+                Print the list?
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button className="btn-confirm-remove cursor-pointer border border-gray-400" onClick={async() => exportEntries(entries, date)} variant="primary">
+                  <ReceiptText />Print list
                 </Button>
               </DialogClose>
               <DialogClose asChild>

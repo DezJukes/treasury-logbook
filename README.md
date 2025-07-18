@@ -1,6 +1,8 @@
 # Treasury Logbook
 
-A digital logbook system for the treasury department, designed to help students inquire about their financial assistance.
+A digital logbook system for the treasury department, designed to help record students that inquire about their financial assistance.
+
+![Treasury Logbook System Screenshot](public/ui-ss.png)
 
 ## Features
 

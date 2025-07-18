@@ -29,13 +29,12 @@ import {
 function SectionDisplay() {
   const [selectedEntry, setSelectedEntry] = React.useState(null);
   const [validation, setValidation] = React.useState(false);
-  const [date, setDate] = React.useState(new Date());
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [date, setDate] = React.useState(new Date());
   const entries = useEntries(date);
   
-  // Filter entries based on search term
   const filteredEntries = entries.filter(entry =>
-    entry.student_name.toLowerCase().includes(searchTerm.toLowerCase())
+    entry.student_name.toLowerCase().includes(searchTerm.toLowerCase().trim())
   );
   
   const formatDate = (dateString) => {

@@ -64,11 +64,6 @@ function SectionDisplay() {
         {/* Date Picker */}
         <div>
           <DatePicker value={date} onChange={setDate} />
-          {date && (
-            <p className="text-[12px] text-gray-600">
-              You selected: {date.toDateString()}
-            </p>
-          )}
         </div>
 
         {/* Save as .csv button */}
@@ -91,6 +86,11 @@ function SectionDisplay() {
 
       {/* Table with horizontal scroll */}
       <div className="w-full px-6 pb-6">
+        {date && (
+            <p className="text-[12px] mb-3 text-gray-600">
+              You selected: {date.toDateString()}
+            </p>
+          )}
         <div className="min-h-[300px] max-h-[400px] overflow-y-auto border">
           <Table>
             <TableCaption>Recent visit entries</TableCaption>

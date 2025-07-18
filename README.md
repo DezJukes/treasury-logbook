@@ -6,9 +6,8 @@ A digital logbook system for the treasury department, designed to help record st
 
 ## Features
 
+- Basic CRD System (Create, Read, Delete System)
 - Built with **React**, **TailwindCSS**, **Supabase**, and **shadcn/ui**
-- Modular and reusable component structure
-- Clean separation of input and display logic
 - Follows software engineering best practices
 
 ## Getting Started

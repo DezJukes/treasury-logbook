@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/table";
 
 function SectionDisplay() {
+  const [validationPrint, setValidationPrint] = React.useState(false);
   const [selectedEntry, setSelectedEntry] = React.useState(null);
   const [validation, setValidation] = React.useState(false);
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -72,7 +73,7 @@ function SectionDisplay() {
 
         {/* Save as .csv button */}
         <div>
-          <Button className="btn-save gap-3 bg-transparent text-black border border-gray-300 w-full cursor-pointer" onClick={() => setValidation(true)} ><Download />Save list</Button>
+          <Button className="btn-save gap-3 bg-transparent text-black border border-gray-300 w-full cursor-pointer" onClick={() => setValidationPrint(true)} ><Download />Save list</Button>
         </div>
 
         <div className="w-full sm:w-1/3">
@@ -149,8 +150,8 @@ function SectionDisplay() {
         </Dialog>
       )}
 
-      {validation && (
-        <Dialog open={validation} onOpenChange={setValidation}>
+      {validationPrint && (
+        <Dialog open={validationPrint} onOpenChange={setValidationPrint}>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Are you sure?</DialogTitle>

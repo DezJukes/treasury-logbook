@@ -40,12 +40,12 @@
 }
 
 .btn-confirm:hover {
-  background: rgb(255, 250, 250);
+  background: rgb(76, 255, 49);
   scale: 1.1;
 }
 
 .btn-confirm:active {
-  background: rgb(196, 196, 196);
+  background: rgb(67, 210, 45);
   scale: 1.1;
 }
 

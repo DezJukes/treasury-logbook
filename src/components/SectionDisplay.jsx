@@ -1,4 +1,4 @@
-import { FileText, Search, Download, CircleX } from "lucide-react";
+import { FileText, Search, Download, CircleX, SquareX } from "lucide-react";
 import { DatePicker } from "../components/ui/CalendarPicker";
 import { useEntries } from "../hooks/supabaseFetch";
 import { deleteEntry } from "@/hooks/deleteEntry";
@@ -6,6 +6,16 @@ import { exportEntries } from "@/hooks/exportEntries";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import React from "react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import {
   Table,
   TableBody,
@@ -17,6 +27,8 @@ import {
 } from "@/components/ui/table";
 
 function SectionDisplay() {
+  const [selectedEntry, setSelectedEntry] = React.useState(null);
+  const [validation, setValidation] = React.useState(false);
   const [date, setDate] = React.useState(new Date());
   const entries = useEntries(date);
   
@@ -81,20 +93,50 @@ function SectionDisplay() {
               </TableRow>
             </TableHeader>
             <TableBody>
-                {entries.map((entry, index) => (
-                  <TableRow key={index}>
-                    <TableCell className="font-medium">{entry.student_no}</TableCell>
-                    <TableCell>{entry.student_name}</TableCell>
-                    <TableCell className="max-w-xs whitespace-break-spaces break-words">{entry.purpose}</TableCell>
-                    <TableCell>{entry.staff}</TableCell>
-                    <TableCell className="text-right">{formatDate(entry.date)}</TableCell>
-                    <TableCell className="text-red-500"><div className="btn-remove flex items-center justify-center cursor-pointer"><CircleX onClick={async() => {deleteEntry(entry.id)}}/></div></TableCell>
-                  </TableRow>
-                ))}
+              {entries.map((entry, index) => (
+                <TableRow key={index}>
+                  <TableCell className="font-medium">{entry.student_no}</TableCell>
+                  <TableCell>{entry.student_name}</TableCell>
+                  <TableCell className="max-w-xs whitespace-break-spaces break-words">{entry.purpose}</TableCell>
+                  <TableCell>{entry.staff}</TableCell>
+                  <TableCell className="text-right">{formatDate(entry.date)}</TableCell>
+                  <TableCell className="text-red-500"><div className="btn-remove flex items-center justify-center cursor-pointer"><CircleX onClick={() => {setSelectedEntry(entry); setValidation(true); }}/></div></TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </div>
       </div>
+
+      {/* Will show the validation */}
+      {validation && selectedEntry && (
+        <Dialog open={validation} onOpenChange={setValidation}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Are you sure?</DialogTitle>
+              <DialogDescription>
+                Double check your entry. We just keep tracking everyone who entered Treasury Office.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button className="btn-confirm cursor-pointer border border-gray-400" onClick={async() => {
+                    await deleteEntry(selectedEntry.id);
+                    setValidation(false);
+                    setSelectedEntry(null);
+                  }} variant="primary">
+                  <SquareX />Delete Entry
+                </Button>
+              </DialogClose>
+              <DialogClose asChild>
+                <Button className="btn-close cursor-pointer" type="button" variant="secondary" onClick={() => {setValidation(false); setSelectedEntry(null); }}>
+                  Close
+                </Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )}
     </main>
   );
 }

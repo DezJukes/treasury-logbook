@@ -149,7 +149,7 @@ function SectionDisplay() {
             </DialogHeader>
             <DialogFooter>
               <DialogClose asChild>
-                <Button className="btn-confirm-remove cursor-pointer border border-gray-400" onClick={async() => exportEntries(entries, date)} variant="primary">
+                <Button className="btn-confirm-print cursor-pointer border border-gray-400" onClick={async() => exportEntries(entries, date)} variant="primary">
                   <ReceiptText />Print list
                 </Button>
               </DialogClose>

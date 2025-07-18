@@ -59,6 +59,16 @@
   scale: 1.1;
 }
 
+.btn-confirm-print:hover {
+  background: rgb(255, 249, 249);
+  scale: 1.1;
+}
+
+.btn-confirm-print:active {
+  background: rgb(196, 196, 196);
+  scale: 1.1;
+}
+
 .btn-close:hover {
   background: rgb(255, 237, 237);
   scale: 1.1;

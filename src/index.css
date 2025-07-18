@@ -49,6 +49,16 @@
   scale: 1.1;
 }
 
+.btn-confirm-remove:hover {
+  background: rgb(255, 190, 194);
+  scale: 1.1;
+}
+
+.btn-confirm-remove:active {
+  background: rgb(255, 103, 110);
+  scale: 1.1;
+}
+
 .btn-close:hover {
   background: rgb(255, 237, 237);
   scale: 1.1;

@@ -120,7 +120,7 @@ function SectionDisplay() {
             </DialogHeader>
             <DialogFooter>
               <DialogClose asChild>
-                <Button className="btn-confirm cursor-pointer border border-gray-400" onClick={async() => {
+                <Button className="btn-confirm-remove cursor-pointer border border-gray-400" onClick={async() => {
                     await deleteEntry(selectedEntry.id);
                     setValidation(false);
                     setSelectedEntry(null);

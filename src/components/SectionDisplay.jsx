@@ -34,7 +34,8 @@ function SectionDisplay() {
   const entries = useEntries(date);
   
   const filteredEntries = entries.filter(entry =>
-    entry.student_name.toLowerCase().includes(searchTerm.toLowerCase().trim())
+    entry.student_name.toLowerCase().includes(searchTerm.toLowerCase().trim()) ||
+    entry.staff.toLowerCase().includes(searchTerm.toLowerCase().trim())
   );
   
   const formatDate = (dateString) => {

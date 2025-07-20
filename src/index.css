@@ -14,21 +14,25 @@
 .btn-entry:hover {
   background-color: #345cd4;
   scale: 1.03;
+  transition: 0.2s ease-in-out;
 }
 
 .btn-entry:active {
   background-color: #5c75bd;
   scale: 1.03;
+  transition: 0.2s ease-in-out;
 }
 
 .btn-save:hover {
   border: 3px solid #cedaff;
   scale: 1.03;
+  transition: 0.2s ease-in-out;
 }
 
 .btn-save:active {
   background-color: #d8e2ff;
   scale: 1.03;
+  transition: 0.2s ease-in-out;
 }
 
 .btn-remove:hover {
@@ -81,6 +85,7 @@
 
 .dialog-x:hover {
   scale: 1.3;
+  transition: 0.2s ease-in-out;
 }
 
 .btn-bot:hover {

@@ -44,7 +44,7 @@ export async function handleLogbookQuery(prompt) {
   const summary = `Here are all logs found for "${matchedEntry.name}":\n${logs}`;
 
 
-  // Gen-AI Customization
+  // Gen-AI Customization (!)
   const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-lite' });
   const result = await model.generateContent(
   `User asked: "${prompt}".\n\nHere are the visit log details:\n${summary}\n\nPlease respond naturally and helpfully. Format the information in bullet points for easy understanding. Use **bold text** to highlight important details like names, dates, and purposes. Keep the tone friendly and clear.`

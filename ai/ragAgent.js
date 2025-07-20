@@ -11,36 +11,43 @@ const supabase = createClient(
 );
 
 export async function handleLogbookQuery(prompt) {
-  const nameMatch = prompt.match(/(?:Was|Is)\s+(.*?)\s+logged/i);
-  const name = nameMatch?.[1]?.trim();
+  const words = prompt.split(/\s+/).filter(w => w.length > 2);
 
-  if (!name) return "Please specify a name to search.";
+  let matchedEntry = null;
 
-  // Search by name (case-insensitive)
-  const { data, error } = await supabase
-    .from('visit_entries')
-    .select('student_name, date')
-    .ilike('student_name', `%${name}%`);
+  for (const word of words) {
+    const { data, error } = await supabase
+      .from('visit_entries')
+      .select('student_name, date, purpose')
+      .ilike('student_name', `%${word}%`);
 
-  if (error) return `Error fetching data: ${error.message}`;
-  if (!data || data.length === 0) return `${name} has no log entries.`;
+    if (error) return `Error searching for ${word}: ${error.message}`;
 
-  // Group all dates associated with the person
-  const dates = data
-    .map(entry => new Date(entry.date).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }));
+    if (data && data.length > 0) {
+      matchedEntry = { name: word, entries: data };
+      break;
+    }
+  }
 
-  const uniqueDates = [...new Set(dates)]; // remove duplicates
+  if (!matchedEntry) {
+    return "No matching person found in the records. Try using another name or spelling.";
+  }
 
-  const summary = `${name} was logged in on:\n- ${uniqueDates.join('\n- ')}`;
+  // Build detailed logs with date and purpose
+  const logs = matchedEntry.entries.map(entry => {
+    const formattedDate = new Date(entry.date).toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    });
+    return `• ${entry.student_name} logged in on ${formattedDate} with purpose: "${entry.purpose || "No purpose specified"}"`;
+  }).join('\n');
+
+  const summary = `Here are all logs found for "${matchedEntry.name}":\n${logs}`;
 
   const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-lite' });
   const result = await model.generateContent(
-    `User asked: "${prompt}". Based on the logs, ${summary}. Respond naturally and helpfully.`
+    `User asked: "${prompt}".\n\nBased on visit logs:\n${summary}\n\nPlease respond naturally and helpfully using this data.`
   );
+
   const response = await result.response;
   return response.text();
 }

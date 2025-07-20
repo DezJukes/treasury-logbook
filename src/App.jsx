@@ -13,9 +13,7 @@ function App() {
         <div className="max-sm:flex-col flex justify-center gap-10 w-full max-w-7xl px-6">
           <SectionInputs />
           <SectionDisplay />
-          <div className="max-w-md w-full">
-            <AiAssistant />
-          </div>
+          <AiAssistant />
         </div>
       </main>
     </div>

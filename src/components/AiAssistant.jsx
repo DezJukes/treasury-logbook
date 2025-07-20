@@ -61,13 +61,14 @@ export default function AiAssistant() {
             </button>
           </div>
 
-          <input
-            type="text"
+          <textarea
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="e.g. Was Erika Manalo logged in?"
-            className="w-full px-3 py-2 border rounded mb-2 text-sm focus:outline-none focus:ring focus:ring-blue-300"
+            className="w-full resize-none px-3 py-2 border rounded mb-2 text-sm focus:outline-none focus:ring focus:ring-blue-300"
+            rows={3}
           />
+
 
           <button
             onClick={askAI}

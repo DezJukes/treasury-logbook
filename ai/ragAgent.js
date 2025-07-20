@@ -47,8 +47,20 @@ export async function handleLogbookQuery(prompt) {
   // Gen-AI Customization (!)
   const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-lite' });
   const result = await model.generateContent(
-  `User asked: "${prompt}".\n\nHere are the visit log details:\n${summary}\n\nPlease respond naturally and helpfully. Format the information in bullet points for easy understanding. Use **bold text** to highlight important details like names, dates, and purposes. Keep the tone friendly and clear.`
-);
+    `User asked: "${prompt}"
+
+      Here is the full visit log data:
+      ${summary}
+
+      Please do the following:
+      - Understand the intent of the user's request (e.g., name, time period, or keyword filters)
+      - When filtering by a name, match not only exact names but also names that contain or are related to the given name.
+      - Count and clearly state how many relevant logs were found
+      - Present all relevant log entries in bullet point format
+      - Use **bold text** to emphasize important details such as names, dates, and purposes
+      - Write in a friendly, helpful, and easy-to-read tone`
+        );
+
 
 
   const response = await result.response;

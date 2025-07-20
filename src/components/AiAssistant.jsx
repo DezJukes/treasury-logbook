@@ -40,6 +40,17 @@ export default function AiAssistant() {
 
   return (
     <>
+      {/* Greetings of Telly the AI */}
+      {!open && (
+        <div className="floating-greeting">
+            <div className="speech-bubble">
+              <p><strong>Hi, I'm Telly!</strong> 🧠</p>
+              <p className="mt-1">Need to find someone from the Treasury Logbook? Just ask me!</p>
+              <div className="speech-tail" />
+            </div>
+          </div>
+        )}
+
       {/* Floating Button */}
       <button onClick={() => setOpen(true)} className="btn-bot fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg cursor-pointer" title="Ask Logbook AI">
         <Bot size={40} />

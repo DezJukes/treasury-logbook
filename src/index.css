@@ -97,6 +97,50 @@
   scale: 0.5;
 }
 
+.floating-greeting {
+  position: fixed;
+  bottom: 96px;
+  right: 10px;
+  width: 288px; /* ~w-72 */
+  z-index: 40;
+  animation: float 3s ease-in-out infinite;
+}
+
+.speech-bubble {
+  position: relative;
+  background-color: white;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  font-size: 0.875rem; /* text-sm */
+  color: #374151; /* gray-800 */
+}
+
+.speech-tail {
+  position: absolute;
+  bottom: -8px;
+  right: 40px;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-right: 1px solid #d1d5db;
+  border-bottom: 1px solid #d1d5db;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+/* Floating animation keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+
 
 
 @custom-variant dark (&:is(.dark *));

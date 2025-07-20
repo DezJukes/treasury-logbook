@@ -1,5 +1,6 @@
 import SectionDisplay from "./components/SectionDisplay";
 import SectionInputs from "./components/SectionInputs";
+import AiAssistant from "./components/AiAssistant";
 import Navbar from "./components/Navbar";
 import { Toaster } from "sonner";
 
@@ -12,6 +13,7 @@ function App() {
         <div className="max-sm:flex-col flex justify-center gap-10 w-full max-w-7xl px-6">
           <SectionInputs />
           <SectionDisplay />
+          <AiAssistant />
         </div>
       </main>
     </div>

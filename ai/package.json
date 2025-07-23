@@ -13,9 +13,12 @@
   "description": "",
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@langchain/core": "^0.3.66",
+    "@langchain/google-genai": "^0.2.15",
     "@supabase/supabase-js": "^2.52.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "langchain": "^0.3.30"
   }
 }

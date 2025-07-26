@@ -45,7 +45,7 @@ export default function AiAssistant() {
         <div className="floating-greeting">
             <div className="speech-bubble">
               <p><strong>Hi, I'm Telly!</strong> 🧠</p>
-              <p className="mt-1">Need to find someone from the Treasury Logbook? Just ask me!</p>
+              <p className="text-text3 mt-1">Need to find someone from the Treasury Logbook? Just ask me!</p>
               <div className="speech-tail" />
             </div>
           </div>

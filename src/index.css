@@ -106,6 +106,14 @@
   animation: float 3s ease-in-out infinite;
 }
 
+@media screen and (max-width: 640px) {
+  .floating-greeting {
+    bottom: 80px;
+    right: 10px;
+    width: 200px; /* ~w-60 */
+  }
+}
+
 .speech-bubble {
   position: relative;
   background-color: white;

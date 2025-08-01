@@ -21,6 +21,8 @@ export function useEntries(selectedDate) {
       23, 59, 59, 999
     ).toISOString();
 
+    console.log("Fetching entries for date range:", startOfDay, "to", endOfDay);
+
     const fetchEntries = async () => {
       const { data, error } = await supabase.from("visit_entries").select("*").gte("date", startOfDay).lte("date", endOfDay).order("date", { ascending: false });;
       if (error) {

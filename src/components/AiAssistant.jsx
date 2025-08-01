@@ -42,7 +42,7 @@ export default function AiAssistant() {
     <>
       {/* Greetings of Telly the AI */}
       {!open && (
-        <div className="floating-greeting">
+        <div className="floating-greeting max-sm:hidden">
             <div className="speech-bubble">
               <p><strong>Hi, I'm Telly!</strong> 🧠</p>
               <p className="text-text3 mt-1">Need to find someone from the Treasury Logbook? Just ask me!</p>

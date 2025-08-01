@@ -112,7 +112,7 @@ function SectionDisplay() {
                   <TableCell className="max-w-xs whitespace-break-spaces break-words">{entry.purpose}</TableCell>
                   <TableCell>{entry.staff}</TableCell>
                   <TableCell>{formatDate(entry.date)}</TableCell>
-                  <TableCell className="text-red-500"><div className="btn-remove flex items-center justify-center cursor-pointer"><CircleX onClick={() => {setSelectedEntry(entry); setValidation(true); }}/></div></TableCell>
+                  <TableCell className="text-red-500"><div className="btn-remove flex items-center cursor-pointer"><CircleX onClick={() => {setSelectedEntry(entry); setValidation(true); }}/></div></TableCell>
                 </TableRow>
               ))}
             </TableBody>

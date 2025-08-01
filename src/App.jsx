@@ -10,7 +10,7 @@ function App() {
       <Toaster position="top-right" richColors />
       <Navbar />
       <main className="flex justify-center items-start flex-1 bg-gray-50 overflow-y-auto py-10">
-        <div className="max-sm:flex-col flex justify-center gap-10 w-full max-w-7xl px-6">
+        <div className="max-sm:flex-col flex justify-center gap-10 w-full max-w-8xl px-6">
           <SectionInputs />
           <SectionDisplay />
           <AiAssistant />

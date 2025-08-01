@@ -37,7 +37,7 @@ function SectionInputs() {
   } = createEntry();
 
   return (
-    <main className="flex flex-col gap-5 max-w-md border border-gray-400 rounded-lg">
+    <main className="flex flex-col gap-5 w-full max-w-sm border border-gray-400 rounded-lg">
 
       <div className="text-white bg-blue-700 p-5">
         <div className="flex items-center gap-2">

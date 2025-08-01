@@ -49,7 +49,7 @@ function SectionDisplay() {
   };
 
   return (
-    <main className="flex flex-col gap-5 w-full max-w-4xl border border-gray-400 rounded-lg ml-auto">
+    <main className="flex flex-col gap-5 w-full max-w-full border border-gray-400 rounded-lg ml-auto">
       {/* Header with Icon and Search */}
       <section className="flex flex-col sm:flex-row sm:items-center sm:justify-around gap-4 px-6 py-4 bg-gray-100 border-b">
         
@@ -88,7 +88,7 @@ function SectionDisplay() {
       <div className="w-full px-6 pb-6">
         {date && (
             <p className="text-[12px] mb-3 text-gray-600">
-              You selected: {date.toDateString()}
+              <strong>You selected:</strong> {date.toDateString()}
             </p>
           )}
         <div className="min-h-[300px] max-h-[400px] overflow-y-auto border">
@@ -100,8 +100,8 @@ function SectionDisplay() {
                 <TableHead>Name</TableHead>
                 <TableHead>Purpose</TableHead>
                 <TableHead>Staff</TableHead>
-                <TableHead className="text-right">Date</TableHead>
-                <TableHead className="text-right">Action</TableHead>
+                <TableHead>Date</TableHead>
+                <TableHead>Action</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -111,7 +111,7 @@ function SectionDisplay() {
                   <TableCell>{entry.student_name}</TableCell>
                   <TableCell className="max-w-xs whitespace-break-spaces break-words">{entry.purpose}</TableCell>
                   <TableCell>{entry.staff}</TableCell>
-                  <TableCell className="text-right">{formatDate(entry.date)}</TableCell>
+                  <TableCell>{formatDate(entry.date)}</TableCell>
                   <TableCell className="text-red-500"><div className="btn-remove flex items-center justify-center cursor-pointer"><CircleX onClick={() => {setSelectedEntry(entry); setValidation(true); }}/></div></TableCell>
                 </TableRow>
               ))}

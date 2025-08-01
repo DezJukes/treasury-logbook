@@ -93,7 +93,7 @@ function SectionInputs() {
 
       <Dialog>
         <div className="px-10 mb-5">
-          <DialogTrigger className="w-full"><Button className="btn-entry bg-blue-700 w-full cursor-pointer"><CircleCheckBig />Add Entry</Button></DialogTrigger>
+          <DialogTrigger asChild className="w-full"><Button className="btn-entry bg-blue-700 w-full cursor-pointer"><CircleCheckBig />Add Entry</Button></DialogTrigger>
         </div>
         <DialogContent>
           <DialogHeader>

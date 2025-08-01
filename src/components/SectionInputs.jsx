@@ -24,6 +24,7 @@ import {
 import { createEntry } from '@/hooks/createEntry';
 
 function SectionInputs() {
+  const [isStudent, setIsStudent] = React.useState(false);
   const {
     studentNo,
     setStudentNo,
@@ -47,18 +48,39 @@ function SectionInputs() {
         <p className="text-text1">Record Student Visit Information</p>
       </div>
 
-      {/* Student Number  */}
+      {/* Are you a student? */}
       <div className="flex flex-col gap-2 px-10">
+        <Label>Are you a Student?</Label>
+        <Select onValueChange={(value) => setIsStudent(value === 'yes')}>
+          <SelectTrigger className="w-full">
+            <SelectValue/>
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem>Select</SelectItem>
+            <SelectItem value="yes">Yes</SelectItem>
+            <SelectItem value="no">No</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      { isStudent && (
+        <div className="flex flex-col gap-2 px-10">
         <Label>Student Number</Label>
         <Input className="" placeholder="eg. 202234078"
-        value={studentNo} 
+        value={isStudent ? studentNo : null}
         onChange={(e) => setStudentNo(e.target.value)}
         />
       </div>
+      )}
+      
 
       {/* Student Name  */}
       <div className="flex flex-col gap-2 px-10">
-        <Label>Student Name</Label>
+        { isStudent ? (
+          <Label>Student Name</Label>
+        ) : (
+          <Label>Name</Label>
+        )}
         <Input className="" placeholder="Enter full name" 
         value={studentName}
         onChange={(e) => setStudentName(e.target.value)}
@@ -74,7 +96,7 @@ function SectionInputs() {
         />
       </div>
 
-      {/* Dropdown */}
+      {/* Dropdown */}                                
       <div className="flex flex-col gap-2 px-10">
         <Label>Assigned Staff Member</Label>
         <Select value={staff} onValueChange={(value) => setStaff(value)}>

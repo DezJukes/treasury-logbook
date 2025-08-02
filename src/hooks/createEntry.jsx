@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 export function createEntry() {
+  // State variables
   const [studentName, setStudentName] = useState("");
   const [studentNo, setStudentNo] = useState("");
   const [purpose, setPurpose] = useState("");
@@ -52,7 +53,7 @@ export function createEntry() {
       return;
     }
 
-    
+
     // If successful, reset the form fields
     toast.success("Entry added successfully!");
     setStudentNo("");

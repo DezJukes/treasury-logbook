@@ -2,6 +2,7 @@ import { Plus, CircleCheckBig } from 'lucide-react';
 import { Label } from "../components/ui/label";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 import { Input } from "./ui/input";
 import {
   Dialog,
@@ -24,7 +25,11 @@ import {
 import { createEntry } from '@/hooks/createEntry';
 
 function SectionInputs() {
+  // Use State
   const [isStudent, setIsStudent] = React.useState(false);
+
+
+  // Columns from the Database - Entry Hooks
   const {
     studentNo,
     setStudentNo,
@@ -37,9 +42,23 @@ function SectionInputs() {
     handleSubmit,
   } = createEntry();
 
+
+  // Function Validation if the Student number is empty
+  const submitConfirm = async () => {
+    if (isStudent && studentNo.trim() == "") {
+      toast.error("Student number is required for students. Kindly Input your student number.");
+      return;
+    }
+    await handleSubmit();
+  }
+
+
+  // UI Render
   return (
     <main className="flex flex-col gap-5 w-full max-w-sm border border-gray-400 rounded-lg">
 
+
+      {/* Header */}
       <div className="text-white bg-blue-700 p-5">
         <div className="flex items-center gap-2">
           <Plus />
@@ -47,6 +66,7 @@ function SectionInputs() {
         </div>
         <p className="text-text1">Record Student Visit Information</p>
       </div>
+
 
       {/* Are you a student? */}
       <div className="flex flex-col gap-2 px-10">
@@ -63,7 +83,8 @@ function SectionInputs() {
         </Select>
       </div>
 
-      {/* Student number if you're a student */}
+
+      {/* Student number if you're a student*/}
       { isStudent && (
         <div className="flex flex-col gap-2 px-10">
         <Label>Student Number</Label>
@@ -88,6 +109,7 @@ function SectionInputs() {
         />
       </div>
 
+
       {/* Purpose  */}
       <div className="flex flex-col gap-2 px-10">
         <Label>Purpose of Visit</Label>
@@ -96,6 +118,7 @@ function SectionInputs() {
         onChange={(e) => setPurpose(e.target.value)}
         />
       </div>
+
 
       {/* Dropdown */}                                
       <div className="flex flex-col gap-2 px-10">
@@ -113,7 +136,7 @@ function SectionInputs() {
         </Select>
       </div>
 
-
+      {/* Modal - Submit Button */}
       <Dialog>
         <div className="px-10 mb-5">
           <DialogTrigger asChild className="w-full"><Button className="btn-entry bg-blue-700 w-full cursor-pointer"><CircleCheckBig />Add Entry</Button></DialogTrigger>
@@ -125,7 +148,7 @@ function SectionInputs() {
           </DialogHeader>
           <DialogFooter>
             <DialogClose asChild>
-              <Button className="btn-confirm cursor-pointer border border-gray-400" onClick={handleSubmit} variant="primary"><CircleCheckBig />Add Entry</Button>
+              <Button className="btn-confirm cursor-pointer border border-gray-400" onClick={submitConfirm} variant="primary"><CircleCheckBig />Add Entry</Button>
             </DialogClose>
             <DialogClose asChild>
               <Button className="btn-close cursor-pointer" type="button" variant="secondary">Close</Button>

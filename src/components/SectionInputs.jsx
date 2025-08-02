@@ -45,11 +45,7 @@ function SectionInputs() {
 
   // Function Validation if the Student number is empty
   const submitConfirm = async () => {
-    if (isStudent && studentNo.trim() == "") {
-      toast.error("Student number is required for students. Kindly Input your student number.");
-      return;
-    }
-    await handleSubmit();
+    await handleSubmit(isStudent);
   }
 
 

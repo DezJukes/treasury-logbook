@@ -99,8 +99,8 @@
 
 .floating-greeting {
   position: fixed;
-  bottom: 96px;
-  right: 10px;
+  bottom: 20px;
+  right: 114px;
   width: 288px; /* ~w-72 */
   z-index: 40;
   animation: float 3s ease-in-out infinite;
@@ -127,13 +127,13 @@
 
 .speech-tail {
   position: absolute;
-  bottom: -8px;
-  right: 40px;
+  bottom: 30px;
+  right: -10px;
   width: 16px;
   height: 16px;
   background-color: white;
-  border-right: 1px solid #d1d5db;
-  border-bottom: 1px solid #d1d5db;
+  border-right: 2px solid #d1d5db;
+  border-bottom: 2px solid #d1d5db;
   transform: rotate(45deg);
   z-index: -1;
 }

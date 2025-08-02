@@ -1,17 +1,17 @@
-import { useState } from "react";
 import { supabase } from "@/createClient";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function createEntry() {
-  const [studentNo, setStudentNo] = useState("");
   const [studentName, setStudentName] = useState("");
+  const [studentNo, setStudentNo] = useState("");
   const [purpose, setPurpose] = useState("");
   const [staff, setStaff] = useState("");
 
   const handleSubmit = async () => {
     const { error } = await supabase.from("visit_entries").insert([
       {
-        student_no: studentNo,
+        student_no: studentNo || null,
         student_name: studentName,
         purpose,
         staff,

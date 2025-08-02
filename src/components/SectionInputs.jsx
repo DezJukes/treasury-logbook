@@ -63,11 +63,12 @@ function SectionInputs() {
         </Select>
       </div>
 
+      {/* Student number if you're a student */}
       { isStudent && (
         <div className="flex flex-col gap-2 px-10">
         <Label>Student Number</Label>
         <Input className="" placeholder="eg. 202234078"
-        value={isStudent ? studentNo : null}
+        value={studentNo}
         onChange={(e) => setStudentNo(e.target.value)}
         />
       </div>

@@ -28,8 +28,8 @@ function Navbar() {
       <div className="flex items-center gap-4">
         <img className="h-auto w-10 md:w-20 rounded-md" src="/plm-logo.png" alt="plm-logo" />
         <div>
-          <h1 className="text-text4 md:text-h2 font-bold text-yellow-600">Student Services Portal</h1>
-          <p className="text-text4 md:text-text2 text-gray-500">Treasury Digital Logbook System</p>
+          <h1 className="text-text4 md:text-h2 font-bold text-yellow-600">Treasury Logbook System</h1>
+          <p className="text-text4 md:text-text2 text-gray-500">System Services Portal</p>
         </div>
       </div>
 

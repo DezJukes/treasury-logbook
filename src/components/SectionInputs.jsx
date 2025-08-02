@@ -125,8 +125,10 @@ function SectionInputs() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem>Select</SelectItem>
-            <SelectItem value="Mam Cherry">Mam Cherry</SelectItem>
             <SelectItem value="Sir Larry">Sir Larry</SelectItem>
+            <SelectItem value="Mam Cherry">Mam Cherry</SelectItem>
+            <SelectItem value="Mam Jennifer">Mam Jennifer</SelectItem>
+            <SelectItem value="Mam Diane">Mam Diane</SelectItem>
             <SelectItem value="Mam Sheila">Mam Sheila</SelectItem>
           </SelectContent>
         </Select>

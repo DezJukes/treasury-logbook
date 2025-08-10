@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class VisitEntries(models.Model):
-    id = models.BigIntegerField(
+    id = models.AutoField(
         db_column='id',
         primary_key=True,
     )
@@ -24,6 +24,7 @@ class VisitEntries(models.Model):
     )
     date = models.DateTimeField(
         db_column='date',
+        auto_now_add=True,
     )
     class Meta:
         managed = False

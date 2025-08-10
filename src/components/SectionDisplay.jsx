@@ -1,6 +1,7 @@
 import { FileText, Search, Download, CircleX, SquareX, ReceiptText } from "lucide-react";
 import { DatePicker } from "../components/ui/CalendarPicker";
-import { useEntries } from "../hooks/supabaseFetch";
+import { useEntries } from "../hooks/djangoFetch";
+//import { useEntries } from "../hooks/supabaseFetch";
 import { deleteEntry } from "@/hooks/deleteEntry";
 import { exportEntries } from "@/hooks/exportEntries";
 import { Input } from "./ui/input";

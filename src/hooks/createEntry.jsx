@@ -36,30 +36,37 @@ export function createEntry() {
     }
 
 
-    // If passes the validation, proceed to insert into the database
-    const { error } = await supabase.from("visit_entries").insert([
-      {
-        student_no: studentNo || null,
-        student_name: studentName,
-        purpose,
-        staff,
-      },
-    ]);
+    // Prepare data for Django
+    const payload = {
+      student_no: studentNo || null,
+      student_name: studentName,
+      purpose,
+      staff,
+    };
 
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/visitentries/add_entry/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-    // Handle error for inserting data to database
-    if (error) {
+      if (!response.ok) {
+        const errorData = await response.json();
+        toast.error("Failed to add entry: " + (errorData.detail || response.statusText));
+        return;
+      }
+
+      toast.success("Entry added successfully!");
+      setStudentNo("");
+      setStudentName("");
+      setPurpose("");
+      setStaff("Select");
+    } catch (error) {
       toast.error("Failed to add entry: " + error.message);
-      return;
     }
-
-
-    // If successful, reset the form fields
-    toast.success("Entry added successfully!");
-    setStudentNo("");
-    setStudentName("");
-    setPurpose("");
-    setStaff("Select");
   };
 
   return {

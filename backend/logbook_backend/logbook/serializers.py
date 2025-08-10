@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import VisitEntries
 
-class VisitEntriesSerializer(serializers.Serializer):
+class VisitEntriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = VisitEntries
         fields = [

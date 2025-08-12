@@ -41,7 +41,7 @@ A digital logbook system for the treasury department, designed to help record st
 - Python 3.12
 - Command Prompt or Windows Powershell
 - VSCode
-- Postgresql (if not please set it up [see here](##-Setting-up-PostgreSQL))
+- Postgresql (if not please set it up [see here](#-setting-up-postgresql))
 
 ## Run Locally
 
